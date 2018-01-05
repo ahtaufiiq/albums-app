@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { 
+    ScrollView} from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail'
 
@@ -22,8 +23,11 @@ class AlbumList extends Component {
     render() {
         
         return (
-            <ScrollView>
-               {this.renderAlbums()}
+            <ScrollView
+                horizontal={true}  
+                pagingEnabled={true}
+            >
+                {this.renderAlbums()}   
             </ScrollView>
         );
     }
