@@ -85,7 +85,7 @@ const styles = {
     imageStyle: {
         height:300,
         flex:1,
-        width:200
+        width:null
     }
 }
 
