@@ -26,6 +26,7 @@ class AlbumList extends Component {
             <ScrollView
                 horizontal={true}  
                 pagingEnabled={true}
+                showsHorizontalScrollIndicator={false}
             >
                 {this.renderAlbums()}   
             </ScrollView>

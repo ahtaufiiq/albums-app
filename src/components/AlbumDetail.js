@@ -1,8 +1,12 @@
 import React from 'react';
-import { Text , View, Image, Linking} from 'react-native';
+import { Text , View, Image, Linking, Dimensions} from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
+
+import Swiper from 'react-native-swiper';
+
+let {height,width} = Dimensions.get('window');
 
 const AlbumDetail = ({album}) => {
     const {title, artist, thumbnail_image, image, url } =album;
@@ -11,7 +15,7 @@ const AlbumDetail = ({album}) => {
         headerContentStyle,
         headerTextStyle,
         thumbnailContainerStyle,
-        imageStyle 
+        imageStyle, 
     } =styles;
 
 
@@ -29,12 +33,18 @@ const AlbumDetail = ({album}) => {
                 <Text>{artist}</Text>
             </View>
             </CardSection> 
-            <CardSection>
-                <Image 
-                style={imageStyle}
+            
+            <Swiper style={styles.MainMenuContainer}  showsButtons>
+            <Image 
+            style={styles.imageStyle}
+            source={{ uri: image}}
+            />
+            <Image 
+            style={styles.imageStyle}
                 source={{ uri: image}}
                 />
-            </CardSection>
+            </Swiper>
+
             <CardSection>
                 <Button onPress={ () => Linking.openURL(url)}>
                     Buy Now
@@ -49,6 +59,15 @@ const styles = {
     headerContentStyle: {
         flexDirection: 'column',
         justifyContent: 'space-around'
+    },
+    MainMenuContainer: {
+        borderBottomWidth: 1,
+        padding:5,
+        backgroundColor: '#fff',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
+        borderColor: '#ddd',
+        position: 'relative'
     },
     headerTextStyle: {
         fontSize:18
@@ -66,7 +85,7 @@ const styles = {
     imageStyle: {
         height:300,
         flex:1,
-        width:null
+        width:200
     }
 }
 
